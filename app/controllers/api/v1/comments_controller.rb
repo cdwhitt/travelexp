@@ -1,4 +1,5 @@
 class Api::V1::CommentsController < ApiController
+
   def create
     comment = Comment.new(comment_params)
     post = Post.find(params[:post_id])
@@ -18,6 +19,6 @@ class Api::V1::CommentsController < ApiController
   private
 
   def comment_params
-    params.require(:comment).permit(:rating, :title, :body)
+    params.require(:comment).permit(:body)
   end
 end

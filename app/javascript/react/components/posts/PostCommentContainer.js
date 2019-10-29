@@ -11,9 +11,11 @@ const PostCommentContainer = (props) => {
   })
 
   return (
-      <div className="columns small-12">
-        <h3>Comments</h3>
-        {commentInfo}
+      <div className="row">
+        <div className="columns small-12">
+          <h3>Comments</h3>
+            {commentInfo}
+        </div>
       </div>
 
   )

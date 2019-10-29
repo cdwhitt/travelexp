@@ -89,10 +89,15 @@ const PostShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(body => {
-      if (body.comment.id) {
-        setComments([...comments, body.comment])
+      if (body.id) {
+        setPost({
+          ...post, comments: [
+            ...post.comments, body
+          ]
+        })
+        setErrors({})
       } else {
-        setErrors(body.errors)
+        setErrors(body)
         setCommentFields(body.fields)
       }
     })
