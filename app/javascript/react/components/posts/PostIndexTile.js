@@ -3,7 +3,6 @@ import { HideUntilLoaded } from 'react-animation'
 import { Link } from 'react-router-dom'
 
 const PostIndexTile = (props) => {
-
   return (
     <div className="column small-12 post-tile">
       <HideUntilLoaded

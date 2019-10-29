@@ -2,7 +2,13 @@ class Api::V1::PostsController < ApiController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    render json: Post.all
+    users = User.all
+    posts = Post.all
+
+    render json: {
+      users: users,
+      posts: posts
+    }
   end
 
   def show

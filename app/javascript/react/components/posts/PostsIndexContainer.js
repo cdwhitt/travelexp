@@ -3,6 +3,7 @@ import PostIndexTile from './PostIndexTile'
 
 const PostsIndexContainer = (props) => {
   const [posts, setPosts] = useState([])
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     fetch('api/v1/posts')
@@ -18,11 +19,13 @@ const PostsIndexContainer = (props) => {
     .then(response => response.json())
     .then(body => {
       setPosts(body.posts)
+      setUsers(body.users)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
   const postTiles = posts.map(post => {
+
     return (
       <PostIndexTile
         id={post.id}
