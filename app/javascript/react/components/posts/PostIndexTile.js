@@ -11,7 +11,10 @@ const PostIndexTile = (props) => {
         >
         <h2>{props.title}</h2>
         <br/>
-        <Link to={`posts/${props.id}`}>Read More</Link>
+          By: {props.userEmail}<br/>
+        <Link to={`posts/${props.id}`}>
+          Read More
+        </Link>
       </HideUntilLoaded>
     </div>
   )
