@@ -1,0 +1,20 @@
+.show-post-tile {
+  border: 2px solid lightgrey;
+  background-color: white;
+  border-radius: 5px;
+  transition: 0.2s;
+  margin-top: 0.25em;
+  padding: 1em;
+  color: #35495e;
+  h2, h1 {
+    font-family: 'Staatliches', cursive;
+  }
+  a {
+    color: #347474;
+    transition: 0.2s;
+    background-color: none;
+  }
+  a:hover {
+    color: #42b883;
+  }
+}
