@@ -9,18 +9,22 @@
 <body>
 
   <nav class="top-bar">
-    <h1 class="page-title"><a href="/">TravelEXP</a></h1>
+    <h1 class="app-title"><a href="/">TravelEXP</a></h1>
       <ul class="menu header-nav">
-        <li class="header-link top-bar-links"><%= link_to 'Add Post', posts_new_path %></li>
+        <li class="header-link text-center">
+          <%= link_to posts_new_path, title: "Create a New Post" do %>
+            <%= fa_icon "pencil-square-o" %><span class="link-text">Create Post</span>
+          <% end %>
+        </li>
       </ul>
 
     <section class="top-bar-section">
-      <ul class="right">
+      <ul class="right enter-buttons">
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li><%= button_to 'Sign Up', new_user_registration_path, method: :get %></li>
+          <li><%= button_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
     </section>

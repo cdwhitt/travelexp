@@ -1,0 +1,57 @@
+.form-container {
+  border: none;
+  margin: 2em;
+  width: 50%;
+  h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    padding-top: 1em;
+  }
+  a {
+    color: #41B883;
+    transition: 0.2s;
+  }
+  a:hover {
+    color: #FD9636;
+  }
+}
+
+.form-container form {
+  border-radius: 5px;
+  margin: auto;
+  padding: 0.5em;
+  max-width: 700px;
+  width: 95%;
+  background-color: #0A4158;
+  color: white;
+  label {
+    color: white;
+    font-weight: bold;
+  }
+  input {
+    border: none;
+  }
+  .field {
+    margin: auto;
+    width: 90%;
+  }
+  .actions {
+    margin: auto;
+    width: 90%;
+    padding: 0.5em;
+  }
+  input[type=submit] {
+    background-color: #0A4158;
+    border: 1px solid #FD9636;
+    padding: 0.5em;
+    width: 8em;
+    color: #FD9636;
+    text-transform: uppercase;
+    transition: 0.2s;
+  }
+  input[type=submit]:hover {
+    border: 1px solid #42b883;
+    color: #42b883;
+    cursor: pointer;
+  }
+}

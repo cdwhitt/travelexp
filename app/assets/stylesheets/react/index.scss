@@ -1,15 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
-.top-bar, .top-bar li {
+.flash {
+  text-align: center;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.flash-notice {
+  background-color: #93D9AA;
+}
+
+.flash-alert {
+  background-color: #E96F73;
+}
+
+
+.app-title {
+  font-family: 'Press Start 2P', cursive;
+  color: #0A4158;
+  font-size: 2em;
+}
+
+.top-bar, .top-bar li, .top-bar a, .top-bar i {
   background-color: #42b883;
   a {
-    color: #35495e;
+    color: #0A4158;
+    transition: 0.2s;
+  }
+  i {
+    font-size: 2em;
+    padding: 0;
   }
 }
 
-.page-title {
-  font-family: 'Press Start 2P', cursive;
+.header-link a:hover {
+  color: white;
 }
 
 .post-tile {
@@ -17,7 +43,7 @@
   background-color: white;
   border-radius: 5px;
   transition: 0.2s;
-  margin: 0.25em 0 0 0.25em;
+  margin-top: 0.25em;
   padding: 1em;
   color: #35495e;
   h2 {
@@ -26,28 +52,40 @@
   a {
     color: #347474;
     transition: 0.2s;
+    background-color: none;
   }
   a:hover {
     color: #42b883;
   }
 }
 
-.post-tile:hover {
-  border: 2px solid #42b883;
-  background-color: none;
-  // box-shadow: 2px 2px 2px #888888;
+.enter-buttons li {
+  list-style: none;
 }
 
-div.post-tile-container {
-  vertical-align: bottom;
-}
-
-.top-bar-links {
-  transition: 0.2s;
-  background-color: none;
-}
-
-.top-bar-links:hover {
-  background-color: white;
+.enter-buttons input {
+  background-color: #0A4158;
+  border: none;
+  color: white;
   border-radius: 4px;
+  width: 8em;
+  height: 2em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  transition: 0.2s;
+  text-align: center;
+  padding: 0.25em;
+  margin: 0.25em;
+}
+
+.enter-buttons input:hover {
+  background-color: #0A4158;
+  border: 1px solid #FD9636;
+  color: #FD9636;
+  cursor: pointer;
+}
+
+.link-text {
+  padding-bottom: 1em;
+  margin-bottom: 2em;
 }
