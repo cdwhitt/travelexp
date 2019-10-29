@@ -3,6 +3,7 @@ import { HideUntilLoaded } from 'react-animation'
 import { Link } from 'react-router-dom'
 
 const PostIndexTile = (props) => {
+
   return (
     <div className="column small-12 post-tile">
       <HideUntilLoaded
@@ -10,7 +11,10 @@ const PostIndexTile = (props) => {
         >
         <h2>{props.title}</h2>
         <br/>
-        <Link to={`posts/${props.id}`}>Read More</Link>
+          By: {props.userEmail}<br/>
+        <Link to={`posts/${props.id}`}>
+          Read More
+        </Link>
       </HideUntilLoaded>
     </div>
   )

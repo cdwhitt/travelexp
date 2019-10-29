@@ -24,14 +24,20 @@ const PostsIndexContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  let userEmail = ""
   const postTiles = posts.map(post => {
-
+    users.map(user => {
+      if (user.id === post.user_id) {
+        userEmail = user.email
+      }
+    })
     return (
       <PostIndexTile
         id={post.id}
         key={post.id}
         title={post.title}
         body={post.body}
+        userEmail={userEmail}
       />
     )
   })
