@@ -8,12 +8,18 @@ const PostShowContainer = (props) => {
   const [post, setPost] = useState({
     title: "",
     body: "",
-    comments: []
+    current_user: {
+      email: ""
+    }
   })
+  const [author, setAuthor] = useState("")
+  const [comments, setComments] = useState([])
   const [commentFields, setCommentFields] = useState({
     body: ""
   })
   const [errors, setErrors] = useState({})
+  const [loggedInStatus, setLoggedInStatus] = useState(false)
+  const [cssDisplay, setCssDisplay] = useState("hide-comment-form")
 
   let postId = props.match.params.id
 
@@ -30,7 +36,10 @@ const PostShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(body => {
+      setComments(body.post.comments)
+      setAuthor(body.post.user.email)
       setPost(body.post)
+      setLoggedInStatus(body.post.logged_in)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -89,12 +98,8 @@ const PostShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(body => {
-      if (body.id) {
-        setPost({
-          ...post, comments: [
-            ...post.comments, body
-          ]
-        })
+      if (body.comment.id) {
+        setComments([...comments, body.comment])
         setErrors({})
       } else {
         setErrors(body)
@@ -102,6 +107,23 @@ const PostShowContainer = (props) => {
       }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  const showCommentForm = (event) => {
+    if (loggedInStatus) {
+      if (cssDisplay === "hide-comment-form") {
+        setCssDisplay("display-comment-form")
+      } else {
+        setCssDisplay("hide-comment-form")
+      }
+    } else {
+      location.replace("/users/sign_in")
+    }
+  }
+
+  let currentUser = ""
+  if (loggedInStatus === true) {
+    currentUser = post.current_user.email
   }
 
   return (
@@ -112,15 +134,33 @@ const PostShowContainer = (props) => {
         <PostShowTile
           title={post.title}
           body={post.body}
+          author={author}
         />
-        <CommentForm
-          commentFields={commentFields}
-          errors={errors}
-          handleSubmit={handleSubmit}
-          handleInputChange={handleInputChange}
-        />
+      <div className="comment-button">
+        <button type="button" onClick={showCommentForm}>
+          Comment
+        </button>
+        <button type="button" onClick={showCommentForm}>
+          <i className="fas fa-arrow-circle-up"></i>
+        </button>
+        <button type="button" onClick={showCommentForm}>
+          <i className="fas fa-arrow-circle-down"></i>
+        </button>
+        <button type="button" onClick={showCommentForm}>
+          Share
+        </button>
+      </div>
+        <div className={`${cssDisplay}`}>
+          <CommentForm
+            commentFields={commentFields}
+            errors={errors}
+            handleSubmit={handleSubmit}
+            handleInputChange={handleInputChange}
+            currentUser={currentUser}
+          />
+        </div>
         <PostCommentContainer
-          comments={post.comments}
+          comments={comments}
         />
       </HideUntilLoaded>
     </div>

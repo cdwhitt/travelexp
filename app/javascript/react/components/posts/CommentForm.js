@@ -3,15 +3,16 @@ import _ from "lodash"
 import ErrorList from "../ErrorList"
 
 const CommentForm = props => {
-
   return(
-    <div className="columns small-12">
-      <h2>Add Comment</h2>
+    <div className="columns small-12 comment-form">
+      <h3>Your Comment Below</h3>
+
       <form onSubmit={props.handleSubmit} id="comment-form">
       <ErrorList
           errors={props.errors}
         />
-        <label htmlFor="body">Body:
+        <p>Comment as {props.currentUser}</p>
+        <label htmlFor="body">
           <textarea
             type="text"
             id="body"
@@ -22,6 +23,7 @@ const CommentForm = props => {
 
         <input type="submit" value="Send" />
       </form>
+
     </div>
   )
 }

@@ -15,12 +15,17 @@
   background-color: #E96F73;
 }
 
-.app-title {
+h1.app-title {
   font-family: 'Press Start 2P', cursive;
   color: #0A4158;
   font-size: 2em;
   text-shadow: 2px 2px white;
   transition: 0.2s;
+  a {
+    i {
+      font-size: 1.2em;
+    }
+  }
 }
 
 .top-bar, .top-bar ul, .top-bar a, .top-bar i {

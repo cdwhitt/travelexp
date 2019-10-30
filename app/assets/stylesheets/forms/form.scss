@@ -55,3 +55,21 @@
     cursor: pointer;
   }
 }
+
+.comment-form {
+  margin-top: 0.75em;
+  input[type=submit] {
+    background-color: none;
+    border: 1px solid #42b883;
+    padding: 0.5em;
+    width: 5em;
+    color: #42b883;
+    text-transform: uppercase;
+    transition: 0.2s;
+  }
+  input[type=submit]:hover {
+    border: 1px solid #FD9636;
+    color: #FD9636;
+    cursor: pointer;
+    }
+}
