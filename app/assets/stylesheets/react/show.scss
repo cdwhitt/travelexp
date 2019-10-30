@@ -6,7 +6,7 @@
   margin-top: 0.25em;
   padding: 1em;
   color: #35495e;
-  h2, h1 {
+  h3, h2, h1 {
     font-family: 'Staatliches', cursive;
   }
   a {
@@ -16,5 +16,40 @@
   }
   a:hover {
     color: #42b883;
+  }
+}
+
+.hide-comment-form {
+  display: none;
+}
+
+.display-comment-form {
+  display: contents;
+}
+
+.comments-container {
+  padding: 1.5em;
+}
+
+.comment-button button {
+  background-color: none;
+  font-size: 0.75em;
+  border: 1px solid #FD9636;
+  padding: 0.5em;
+  width: 6em;
+  color: #FD9636;
+  transition: 0.2s;
+  cursor: pointer;
+  margin-left: 0.25em;
+}
+
+.comment-tile {
+  padding: 1em;
+  margin-bottom: 1em;
+  .comment-text {
+    padding: 0.5em;
+    margin: 0;
+    border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
   }
 }
