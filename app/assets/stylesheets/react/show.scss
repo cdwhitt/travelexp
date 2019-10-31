@@ -3,7 +3,7 @@
   background-color: white;
   border-radius: 5px;
   transition: 0.2s;
-  margin-top: 0.25em;
+  margin-top: 0.75em;
   padding: 1em;
   color: #35495e;
   h3, h2, h1 {
@@ -17,6 +17,16 @@
   a:hover {
     color: #42b883;
   }
+}
+
+.post-title {
+  border-bottom: 2px solid #42B883;
+}
+
+.post-author {
+  font-style: italic;
+  font-weight: bold;
+  font-family: monospace;
 }
 
 .hide-comment-form {
@@ -45,11 +55,27 @@
 
 .comment-tile {
   padding: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  .comment-user {
+    font-family: monospace;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
   .comment-text {
     padding: 0.5em;
     margin: 0;
     border-bottom: 1px solid lightgrey;
     border-top: 1px solid lightgrey;
   }
+  .comment-date {
+    font-family: monospace;
+    font-weight: bold;
+    margin-top: 0;
+  }
+}
+
+.comment-user {
+  font-family: monospace;
+  font-weight: bold;
+  margin-bottom: 0;
 }

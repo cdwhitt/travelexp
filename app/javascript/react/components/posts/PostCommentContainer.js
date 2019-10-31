@@ -7,13 +7,9 @@ const PostCommentContainer = (props) => {
       <div
         key={comment.id}
         className="columns small-12 comment-tile">
-        {comment.user.email} said...
-        <p className="comment-text">
-          {comment.body}
-        </p>
-        <p>
-          On {comment.comment_date}
-        </p>
+        <p className="comment-user">{comment.user.email} said...</p>
+        <p className="comment-text">{comment.body}</p>
+        <p className="comment-date">On {comment.comment_date}</p>
       </div>
     )
   })
