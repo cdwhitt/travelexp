@@ -11,7 +11,7 @@ const CommentForm = props => {
       <ErrorList
           errors={props.errors}
         />
-        <p>Comment as {props.currentUser}</p>
+        <p className="comment-user">Comment as {props.currentUser}</p>
         <label htmlFor="body">
           <textarea
             type="text"
