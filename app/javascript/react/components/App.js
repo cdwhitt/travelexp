@@ -6,6 +6,7 @@ import PostForm from "./posts/PostForm"
 import PostShowContainer from "./posts/PostShowContainer"
 
 import LeadersIndexContainer from "./leaders/LeadersIndexContainer"
+import UserShowContainer from "./leaders/UserShowContainer"
 
 
 
@@ -17,6 +18,7 @@ export const App = (props) => {
         <Route exact path="/posts/new" component={PostForm} />
         <Route exact path="/posts/:id" component={PostShowContainer} />
         <Route exact path="/leaders" component={LeadersIndexContainer} />
+        <Route exact path="/users/:id" component={UserShowContainer} />
       </Switch>
     </BrowserRouter>
   )
