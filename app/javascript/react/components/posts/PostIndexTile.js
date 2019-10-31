@@ -11,7 +11,10 @@ const PostIndexTile = (props) => {
         >
         <h2>{props.title}</h2>
         <br/>
-          By: {props.userEmail}<br/>
+          <span className="index-tile-author">
+            By: {props.userEmail}
+          </span>
+          <br/>
         <Link to={`posts/${props.id}`}>
           Read More
         </Link>

@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :email
+  attributes :id, :email, :posts, :comments, :score
 end
