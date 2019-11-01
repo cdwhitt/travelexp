@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :show]
       resources :posts, only: [:index, :show, :create, :new] do
+        resources :votes, only: [:create, :index]
         resources :comments, only: [:create]
       end
     end

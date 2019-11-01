@@ -132,6 +132,7 @@ const PostShowContainer = (props) => {
         animationIn="fadeIn"
         >
         <PostShowTile
+          postId={postId}
           title={post.title}
           body={post.body}
           author={author}
@@ -140,12 +141,7 @@ const PostShowContainer = (props) => {
         <button type="button" onClick={showCommentForm}>
           Comment
         </button>
-        <button type="button" onClick={showCommentForm}>
-          <i className="fas fa-arrow-circle-up"></i>
-        </button>
-        <button type="button" onClick={showCommentForm}>
-          <i className="fas fa-arrow-circle-down"></i>
-        </button>
+        
         <button type="button" onClick={showCommentForm}>
           Share
         </button>
