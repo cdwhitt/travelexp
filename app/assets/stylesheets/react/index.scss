@@ -6,6 +6,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-color: #2A5447;
 }
 
 .flash {
@@ -55,12 +56,13 @@ h1.app-title {
 .post-tile {
   border: none;
   background-color: white;
-  opacity: 85%;
+  opacity: 90%;
   border-radius: 5px;
   transition: 0.2s;
   margin-top: 0.75em;
   padding: 1em;
   color: #35495e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   h2, h1 {
     font-family: 'Staatliches', cursive;
   }
@@ -106,5 +108,7 @@ h1.app-title {
 }
 
 span.link-text {
-  font-family: verdana;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.5em;
 }

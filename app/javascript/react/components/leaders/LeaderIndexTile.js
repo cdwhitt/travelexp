@@ -18,12 +18,12 @@ const LeaderIndexTile = (props) => {
   return (
     <div className="columns small-12 leader-tile">
       <div className="row">
-        <div className="columns large-6 text-center left-side">
+        <div className="columns large-6 text-center">
           <h1 className="ranked-user">{props.email}</h1>
           <h2>Rank</h2>
-            <h4>{statusSymbol}</h4>
+            <p className="status-symbol">{statusSymbol}</p>
         </div>
-        <div className="columns large-6 right-side">
+        <div className="columns large-6">
           <h1 className="text-center user-stats-header">Stats</h1>
           <h3>Number of posts:</h3>
             <p className="stat-numbers" id="post-length">{props.posts.length}</p>

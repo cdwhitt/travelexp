@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get '/posts/new', to: "static_pages#new"
   get '/posts/:id', to: "static_pages#index"
   get '/leaders', to: "static_pages#index"
+  get '/users/:id', to: "static_pages#index"
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:index]
+      resources :users, only: [:index, :show]
       resources :posts, only: [:index, :show, :create, :new] do
         resources :comments, only: [:create]
       end
