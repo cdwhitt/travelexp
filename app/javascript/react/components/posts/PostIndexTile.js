@@ -15,7 +15,7 @@ const PostIndexTile = (props) => {
             By: {props.userEmail}
           </span>
           <br/>
-        <Link to={`posts/${props.id}`}>
+        <Link to={`posts/${props.id}`} className="more-button">
           Read More
         </Link>
       </HideUntilLoaded>
