@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TRAVELexp - Level Up Your Trips!</title>
+  <title>TRAVELexp - Level Up Your Travels!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
@@ -12,6 +12,13 @@
     <h1 class="app-title"><a href="/">
       <i class="fa fa-globe-americas 2x"></i>TRAVELexp</a></h1>
       <ul class="menu header-nav">
+        <% if current_user %>
+          <li class="header-link text-center">
+            <a href='/users/<%= current_user.id %>'>
+              <%= fa_icon "user-circle" %><span class="link-text"> My Profile</span>
+            </a>
+          </li>
+        <% end %>
         <li class="header-link text-center">
           <%= link_to posts_new_path, title: "Write Post" do %>
             <%= fa_icon "pencil-alt" %><span class="link-text"> Write Post</span>
@@ -20,11 +27,6 @@
         <li class="header-link text-center">
           <%= link_to leaders_path, title: "TRAVELexperts" do %>
             <%= fa_icon "mountain" %><span class="link-text"> TRAVELexperts</span>
-          <% end %>
-        </li>
-        <li class="header-link text-center">
-          <%= link_to posts_new_path, title: "My Profile" do %>
-            <%= fa_icon "user-circle" %><span class="link-text"> My Profile</span>
           <% end %>
         </li>
         <li class="header-link text-center">
@@ -45,12 +47,6 @@
       </ul>
     </section>
   </nav>
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
 
   <%= yield %>
 
