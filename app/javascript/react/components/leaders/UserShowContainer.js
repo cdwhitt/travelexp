@@ -25,7 +25,7 @@ const UserShowContainer = (props) => {
   }, [])
 
   return (
-    <div className="row">
+    <div className="row user-show-container">
       <UserShowTile
         comments={user.comments}
         posts={user.posts}

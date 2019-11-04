@@ -3,7 +3,7 @@ import { HideUntilLoaded } from 'react-animation'
 
 const LeaderIndexTile = (props) => {
 
-  let statusSymbol = <span className="basic-user">Basic User</span>
+  let statusSymbol = <span className="basic-user">n00b</span>
 
   if (props.score >= 50) {
     statusSymbol = <i className="fas fa-medal gold"></i>
@@ -19,7 +19,9 @@ const LeaderIndexTile = (props) => {
     <div className="columns small-12 leader-tile">
       <div className="row">
         <div className="columns large-6 text-center">
-          <h1 className="ranked-user">{props.email}</h1>
+          <a href={`/users/${props.id}`}>
+            <h1 className="ranked-user">{props.email}</h1>
+          </a>
           <h2>Rank</h2>
             <p className="status-symbol">{statusSymbol}</p>
         </div>
