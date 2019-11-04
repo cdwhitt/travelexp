@@ -34,6 +34,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'dotenv-rails'
 end
 
 
@@ -56,3 +57,4 @@ gem 'webpacker', '~> 3.3'
 gem 'active_model_serializers'
 gem 'font_awesome5_rails'
 gem "carrierwave"
+gem 'fog-aws'

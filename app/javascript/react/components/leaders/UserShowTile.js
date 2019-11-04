@@ -17,9 +17,12 @@ const UserShowTile = (props) => {
     })
   }
 
+
   return (
     <div className="columns large-12 show-user-tile">
       <h1>{props.email}</h1>
+      <img className="profile-image" src={props.profilePhoto}/>
+
         {userPostsList}
     </div>
   )

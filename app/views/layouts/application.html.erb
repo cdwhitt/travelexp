@@ -14,14 +14,14 @@
       <ul class="menu header-nav">
         <% if current_user %>
           <li class="header-link text-center">
-            <a href='/users/<%= current_user.id %>' title="My Profile">
-              <%= fa_icon "user-circle" %><span class="link-text"> My Profile</span>
+            <a href='/users/<%= current_user.id %>' title="My Journal">
+              <%= fa_icon "book-reader" %><span class="link-text"> My Journal</span>
             </a>
           </li>
         <% end %>
         <li class="header-link text-center">
-          <%= link_to posts_new_path, title: "Write Post" do %>
-            <%= fa_icon "pencil-alt" %><span class="link-text"> Write Post</span>
+          <%= link_to posts_new_path, title: "Add New Entry" do %>
+            <%= fa_icon "pencil-alt" %><span class="link-text"> New Entry</span>
           <% end %>
         </li>
         <li class="header-link text-center">

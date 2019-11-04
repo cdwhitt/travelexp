@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :profile_photo, ProfilePhotoUploader
 
   has_many :posts
   has_many :comments

@@ -1,4 +1,4 @@
-class PostPhotoAlbumUploader < CarrierWave::Uploader::Base
+class ProfilePhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -8,7 +8,7 @@ class PostPhotoAlbumUploader < CarrierWave::Uploader::Base
     storage :file
   else
     storage :fog
-  end
+  end 
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
