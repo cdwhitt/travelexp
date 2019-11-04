@@ -16,26 +16,8 @@ class Api::V1::PostsController < ApiController
     render json: post, serializer: PostShowSerializer, scope: {current_user: current_user, logged_in: user_signed_in?}
   end
 
-  # def create
-  #   post = Post.new(post_params)
-  #   post.user = current_user
-  #
-  #   if post.save
-  #     render json: post
-  #   else
-  #     render json: {
-  #       errors: post.errors.messages,
-  #       fields: post
-  #     }
-  #   end
-  # end
   def create
-    binding.pry
-    post = Post.new(
-      title: params[:title],
-      body: params[:body],
-      photos: params["photos"]
-    )
+    post = Post.new(post_params)
     post.user = current_user
 
     if post.save
@@ -47,9 +29,27 @@ class Api::V1::PostsController < ApiController
       }
     end
   end
-
-  # private
-  # def post_params
-  #   params.require(:post).permit(:title, :body)
+  # def create
+  #   binding.pry
+  #   post = Post.new(
+  #     title: params[:title],
+  #     body: params[:body],
+  #     photos: params["photos"]
+  #   )
+  #   post.user = current_user
+  #
+  #   if post.save
+  #     render json: post
+  #   else
+  #     render json: {
+  #       errors: post.errors.messages,
+  #       fields: post
+  #     }
+  #   end
   # end
+
+  private
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 end

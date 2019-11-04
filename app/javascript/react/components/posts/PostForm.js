@@ -42,56 +42,93 @@ const PostForm = props => {
   const handleSubmit = event => {
 
     event.preventDefault()
-    if (validForSubmission()) {
-      let submittedFields = new FormData()
-        submittedFields.append("title", postFields.title)
-        submittedFields.append("body", postFields.body)
-        submittedFields.append("photos", photosUpload[0])
-        debugger
-      fetch('/api/v1/posts.json', {
-      credentials: "same-origin",
-      method: 'POST',
-      body: submittedFields
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-         error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      if (body.post.id) {
-        setRedirectNumber(body.post.id)
-      } else {
-        setErrors(body.errors)
-        setPostFields(body.fields)
-      }
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+   if (validForSubmission()) {
 
-      setPostFields({
-        title: "",
-        body: "",
-        photos: {}
-      })
-    }
+     fetch('/api/v1/posts.json', {
+     credentials: "same-origin",
+     method: 'POST',
+     body: JSON.stringify(postFields),
+     headers: {
+       Accept: "application/json",
+       "Content-Type": "application/json"
+     }
+   })
+   .then(response => {
+     if (response.ok) {
+       return response;
+     } else {
+       let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+       throw(error);
+     }
+   })
+   .then(response => response.json())
+   .then(body => {
+     if (body.post.id) {
+       setRedirectNumber(body.post.id)
+     } else {
+       setErrors(body.errors)
+       setPostFields(body.fields)
+     }
+   })
+   .catch(error => console.error(`Error in fetch: ${error.message}`));
+
+     setPostFields({
+       title: "",
+       body: "",
+     })
+   }
+
+    // event.preventDefault()
+    // if (validForSubmission()) {
+    //   let submittedFields = new FormData()
+    //     submittedFields.append("title", postFields.title)
+    //     submittedFields.append("body", postFields.body)
+    //     submittedFields.append("photos", photosUpload[0])
+    //   fetch('/api/v1/posts.json', {
+    //   credentials: "same-origin",
+    //   method: 'POST',
+    //   body: submittedFields
+    // })
+    // .then(response => {
+    //   if (response.ok) {
+    //     return response;
+    //   } else {
+    //     let errorMessage = `${response.status} (${response.statusText})`,
+    //      error = new Error(errorMessage);
+    //     throw(error);
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(body => {
+    //   if (body.post.id) {
+    //     setRedirectNumber(body.post.id)
+    //   } else {
+    //     setErrors(body.errors)
+    //     setPostFields(body.fields)
+    //   }
+    // })
+    // .catch(error => console.error(`Error in fetch: ${error.message}`));
+    //
+    //   setPostFields({
+    //     title: "",
+    //     body: "",
+    //     photos: {}
+    //   })
+    // }
   }
 
   if (redirectNumber) {
     return <Redirect to={`/posts/${redirectNumber}`} />
   }
-
-  const onDrop = (file) => {
-    if(file.length <= 10) {
-      setPhotosUpload(file)
-    } else {
-      setMessage("You can only upload up to 10 photos")
-    }
-  }
+  //
+  // const onDrop = (file) => {
+  //   if(file.length <= 10) {
+  //     setPhotosUpload(file)
+  //   } else {
+  //     setMessage("You can only upload up to 10 photos")
+  //   }
+  // }
 
   return(
     <div>
@@ -118,30 +155,7 @@ const PostForm = props => {
           />
         </label>
 
-        <section>
-          <div className="dropzone">
-            <Dropzone
-              className=""
-              multiple={true}
-              onDrop={file => onDrop(file)}>
-              {({getRootProps, getInputProps}) => (
 
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    <p>Drag 'n' drop some files here, or click to select files</p>
-                  </div>
-
-              )}
-            </Dropzone>
-          </div>
-          <aside>
-            <ul>
-              {
-                photosUpload.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
-              }
-            </ul>
-          </aside>
-        </section>
 
         <input className="input-button" type="submit" value="Add Post" />
       </form>
@@ -150,3 +164,30 @@ const PostForm = props => {
 }
 
 export default PostForm
+//
+//
+// <section>
+//   <div className="dropzone">
+//     <Dropzone
+//       className=""
+//       multiple={true}
+//       onDrop={file => onDrop(file)}>
+//       {({getRootProps, getInputProps}) => (
+//
+//           <div {...getRootProps()}>
+//             <input {...getInputProps()} />
+//             <p>Drag 'n' drop some files here, or click to select files</p>
+//           </div>
+//
+//       )}
+//     </Dropzone>
+//   </div>
+//   <aside>
+//     <ul>
+//       {
+//         photosUpload.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
+//       }
+//     </ul>
+//   </aside>
+// </section>
+//
