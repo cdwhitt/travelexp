@@ -136,12 +136,13 @@ const PostShowContainer = (props) => {
           title={post.title}
           body={post.body}
           author={author}
+          userId={post.user_id}
         />
       <div className="comment-button">
         <button type="button" onClick={showCommentForm}>
           Comment
         </button>
-        
+
         <button type="button" onClick={showCommentForm}>
           Share
         </button>

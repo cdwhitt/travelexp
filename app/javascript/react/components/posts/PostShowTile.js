@@ -117,7 +117,9 @@ const PostShowTile = (props) => {
     <>
       <div className="columns small-12">
         <h1 className="post-title">{props.title}</h1>
-        <p className="post-author">By: {props.author}</p>
+        <p className="post-author">
+          By: <a href={`/users/${props.userId}`}>{props.author}</a>
+        </p>
         <p className="post-body">{props.body}</p>
 
           <Gallery photos={photos} onClick={openLightbox} />
@@ -135,8 +137,6 @@ const PostShowTile = (props) => {
                 </Modal>
               ) : null}
             </ModalGateway>
-
-
 
       </div>
       <div className="columns small-12">

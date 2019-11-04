@@ -1,0 +1,21 @@
+.show-user-tile {
+  width: 75%;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: 0.2s;
+  margin-top: 0.75em;
+  padding: 1em;
+  color: #35495e;
+  h3, h2, h1 {
+    font-family: 'Staatliches', cursive;
+  }
+  a {
+    color: #347474;
+    transition: 0.2s;
+    background-color: none;
+  }
+  a:hover {
+    color: #42b883;
+  }
+}

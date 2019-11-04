@@ -1,22 +1,26 @@
 import React from 'react'
+import UserPostsTile from './UserPostsTile'
 
 const UserShowTile = (props) => {
-  let postLength
-  let commentLength
+
+  let userPostsList
 
   if (props.posts) {
-    postLength = props.posts.length
-  }
-
-  if (props.comments) {
-    commentLength = props.comments.length
+    userPostsList = props.posts.map(post => {
+      return (
+        <UserPostsTile
+          key={post.id}
+          id={post.id}
+          title={post.title}
+        />
+      )
+    })
   }
 
   return (
-    <div className="columns large-12">
-      {props.email}
-      {postLength}
-      {commentLength}
+    <div className="columns large-12 show-user-tile">
+      <h1>{props.email}</h1>
+        {userPostsList}
     </div>
   )
 }
