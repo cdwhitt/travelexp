@@ -19,11 +19,4 @@ feature 'user signs in and visits new post form', %Q{
 
     expect(page).to have_current_path('/posts/new')
   end
-
-  scenario 'Sees sign in page when visiting new post form' do
-    visit posts_new_path
-
-    expect(page).to have_current_path('/users/sign_in')
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
-  end
 end

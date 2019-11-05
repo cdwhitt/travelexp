@@ -1,5 +1,5 @@
 class PostShowSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :created_at, :user_id, :current_user, :logged_in, :user, :comments
+  attributes :id, :title, :body, :created_at, :user_id, :current_user, :logged_in, :user, :comments, :photos
 
   def current_user
     scope[:current_user]
@@ -11,5 +11,5 @@ class PostShowSerializer < ActiveModel::Serializer
 
   belongs_to :user
   has_many :comments
-  has_many :votes 
+  has_many :votes
 end

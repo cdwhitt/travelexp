@@ -66,47 +66,7 @@ const PostShowTile = (props) => {
 
   const photos = [
   {
-    src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
-    width: 1,
-    height: 1
-  },
-  {
-    src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/PpOHJezOalU/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
+    src: `${props.photo}`,
     width: 4,
     height: 3
   }
@@ -117,7 +77,9 @@ const PostShowTile = (props) => {
     <>
       <div className="columns small-12">
         <h1 className="post-title">{props.title}</h1>
-        <p className="post-author">By: {props.author}</p>
+        <p className="post-author">
+          By: <a href={`/users/${props.userId}`}>{props.author}</a>
+        </p>
         <p className="post-body">{props.body}</p>
 
           <Gallery photos={photos} onClick={openLightbox} />
@@ -135,8 +97,6 @@ const PostShowTile = (props) => {
                 </Modal>
               ) : null}
             </ModalGateway>
-
-
 
       </div>
       <div className="columns small-12">

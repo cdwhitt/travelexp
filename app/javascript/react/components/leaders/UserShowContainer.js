@@ -2,7 +2,15 @@ import React, { useEffect, useState } from 'react'
 import UserShowTile from './UserShowTile'
 
 const UserShowContainer = (props) => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({
+    comments: [],
+    current_user: {},
+    email: "",
+    id: "",
+    posts: [],
+    score: ""
+  })
+  const [profilePhoto, setProfilePhoto] = useState("")
 
   let userId = props.match.params.id
 
@@ -19,18 +27,20 @@ const UserShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(body => {
+      setProfilePhoto(body.user.profile_photo.url)
       setUser(body.user)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
   return (
-    <div className="row">
+    <div className="row user-show-container">
       <UserShowTile
         comments={user.comments}
         posts={user.posts}
         email={user.email}
         score={user.score}
+        profilePhoto={profilePhoto}
       />
     </div>
   )

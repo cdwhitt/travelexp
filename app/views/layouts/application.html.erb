@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TRAVELexp - Level Up Your Trips!</title>
+  <title>TRAVELexp - Level Up Your Travels!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
@@ -11,10 +11,17 @@
   <nav class="top-bar">
     <h1 class="app-title"><a href="/">
       <i class="fa fa-globe-americas 2x"></i>TRAVELexp</a></h1>
+
+      <% if current_user %>
       <ul class="menu header-nav">
         <li class="header-link text-center">
-          <%= link_to posts_new_path, title: "Write Post" do %>
-            <%= fa_icon "pencil-alt" %><span class="link-text"> Write Post</span>
+          <a href='/users/<%= current_user.id %>' title="My Journal">
+            <%= fa_icon "book-reader" %><span class="link-text"> My Journal</span>
+          </a>
+        </li>
+        <li class="header-link text-center">
+          <%= link_to posts_new_path, title: "Add New Entry" do %>
+            <%= fa_icon "pencil-alt" %><span class="link-text"> New Entry</span>
           <% end %>
         </li>
         <li class="header-link text-center">
@@ -22,18 +29,8 @@
             <%= fa_icon "mountain" %><span class="link-text"> TRAVELexperts</span>
           <% end %>
         </li>
-        <li class="header-link text-center">
-          <%= link_to posts_new_path, title: "My Profile" do %>
-            <%= fa_icon "user-circle" %><span class="link-text"> My Profile</span>
-          <% end %>
-        </li>
-        <li class="header-link text-center">
-          <%= link_to posts_new_path, title: "Plan Trip" do %>
-            <%= fa_icon "bookmark" %><span class="link-text"> My Favorites</span>
-          <% end %>
-        </li>
       </ul>
-
+      <% end %>
     <section class="top-bar-section">
       <ul class="right enter-buttons">
         <%- if current_user -%>
@@ -45,12 +42,6 @@
       </ul>
     </section>
   </nav>
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
 
   <%= yield %>
 

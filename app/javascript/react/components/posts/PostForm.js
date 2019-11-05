@@ -2,13 +2,15 @@ import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import _ from "lodash"
 import ErrorList from "../ErrorList"
+import Dropzone from 'react-dropzone'
 
 const PostForm = props => {
   const [postFields, setPostFields] = useState({
     title: "",
     body: "",
   })
-
+  const [photosUpload, setPhotosUpload] = useState([])
+  const [message, setMessage] = useState("")
   const [errors, setErrors] = useState({})
   const [redirectNumber, setRedirectNumber] = useState(null)
 
@@ -25,7 +27,7 @@ const PostForm = props => {
     const requiredFields = ["title", "body"]
 
     requiredFields.forEach(field => {
-      if(postFields[field].trim() === "") {
+      if(postFields[field] === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "can't be blank"
@@ -37,19 +39,21 @@ const PostForm = props => {
     return _.isEmpty(submitErrors)
   }
 
+  let loading = ""
+
   const handleSubmit = event => {
 
     event.preventDefault()
     if (validForSubmission()) {
 
+      let submittedFields = new FormData()
+        submittedFields.append("title", postFields.title)
+        submittedFields.append("body", postFields.body)
+        submittedFields.append("photos", photosUpload[0])
       fetch('/api/v1/posts.json', {
       credentials: "same-origin",
       method: 'POST',
-      body: JSON.stringify(postFields),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
+      body: submittedFields
     })
     .then(response => {
       if (response.ok) {
@@ -74,6 +78,7 @@ const PostForm = props => {
       setPostFields({
         title: "",
         body: "",
+        photos: ""
       })
     }
   }
@@ -82,10 +87,19 @@ const PostForm = props => {
     return <Redirect to={`/posts/${redirectNumber}`} />
   }
 
+  const onDrop = (file) => {
+    if(file.length === 1) {
+      setPhotosUpload(file)
+    } else {
+      setMessage("You can only upload one photo")
+    }
+  }
+
   return(
-    <div>
-      <h2>Add a New Post</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="row form-margin">
+    <div className="post-form-container columns small-12">
+      <form onSubmit={handleSubmit} className="post-form">
+        <h2 className="text-center">New Journal Entry</h2>
         <ErrorList
           errors={errors}
         />
@@ -100,6 +114,8 @@ const PostForm = props => {
 
         <label htmlFor="body">Body:
           <textarea
+            rows="10"
+            cols="50"
             type="text"
             id="body"
             value={postFields.body}
@@ -107,8 +123,41 @@ const PostForm = props => {
           />
         </label>
 
-        <input className="input-button" type="submit" value="Add Post" />
+        <section>
+          <div className="dropzone">
+            <Dropzone
+              className=""
+              multiple={false}
+              onDrop={file => onDrop(file)}
+              accept='image/*'>
+              {({getRootProps, getInputProps}) => (
+
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <p className="dropzone-box">
+                      Upload a photo from your trip!
+                      <br/>
+                      (Drag n drop or click to upload)
+                    </p>
+                  </div>
+
+              )}
+            </Dropzone>
+          </div>
+          <aside>
+            <ul>
+              {
+                photosUpload.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
+              }
+            </ul>
+          </aside>
+        </section>
+
+        <p>{loading}</p>
+
+        <input className="input-button" type="submit" value="Post" />
       </form>
+    </div>
     </div>
   )
 }

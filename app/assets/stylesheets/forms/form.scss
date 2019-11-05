@@ -73,3 +73,104 @@
     cursor: pointer;
     }
 }
+
+
+.post-form-container {
+  border: none;
+  margin: auto;
+  width: 70%;
+  h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    padding-top: 1em;
+  }
+  a {
+    color: #41B883;
+    transition: 0.2s;
+  }
+  a:hover {
+    color: #FD9636;
+  }
+}
+
+.post-form-container form {
+  border-radius: 5px;
+  margin: auto;
+  padding: 2em;
+  max-width: 700px;
+  width: 100%;
+  background-color: #0A4158;
+  color: white;
+  label {
+    color: white;
+    font-weight: bold;
+  }
+  input {
+    border: none;
+  }
+  .field {
+    margin: auto;
+    width: 90%;
+  }
+  .actions {
+    margin: auto;
+    width: 90%;
+    padding: 0.5em;
+  }
+  input[type=submit] {
+    background-color: #0A4158;
+    border: 1px solid #FD9636;
+    padding: 0.5em;
+    width: 8em;
+    color: #FD9636;
+    text-transform: uppercase;
+    transition: 0.2s;
+  }
+  input[type=submit]:hover {
+    border: 1px solid #42b883;
+    color: #42b883;
+    cursor: pointer;
+  }
+}
+
+.post-form {
+  padding: 5em;
+  input[type=submit] {
+    background-color: none;
+    border: 1px solid #42b883;
+    padding: 0.5em;
+    width: 5em;
+    color: #42b883;
+    text-transform: uppercase;
+    transition: 0.2s;
+  }
+  input[type=submit]:hover {
+    border: 1px solid #FD9636;
+    color: #FD9636;
+    cursor: pointer;
+    }
+}
+
+.dropzone-box {
+  border: 3px dotted black;
+  background-color: #0A4158;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75em;
+  color: #FD9636;
+  opacity: 90%;
+  padding: 1em;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.dropzone-box:hover {
+  border: 3px dotted #FD9636;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  opacity: 80%;
+}
+
+.form-margin {
+  margin-top: 1em;
+}
