@@ -1,5 +1,6 @@
 .user-show-container {
-  width: 75%;
+  width: 70%;
+  font-family: monospace;
 }
 
 .show-user-tile {
@@ -8,9 +9,9 @@
   border-radius: 5px;
   transition: 0.2s;
   margin-top: 0.75em;
-  padding: 1em;
+  padding: 2em;
   color: #35495e;
-  h3, h2, h1 {
+  h5, h4, h3, h2, h1 {
     font-family: 'Staatliches', cursive;
   }
   a {
@@ -25,4 +26,50 @@
 
 .profile-image {
   width: 200px;
+  margin: auto;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.profile-image-container {
+
+}
+
+.stats-column {
+  padding-top: 1em;
+  margin-top: 0;
+  color: white;
+  background-color: #0A4158;
+  border-radius: 5px;
+  margin-left: 0;
+
+}
+
+.entries-column {
+  margin-top: 0;
+  width: 80%;
+  ul {
+    list-style: none;
+  }
+}
+
+.neat-photo-column {
+  background-image: url('/assets/undraw_Destination_6jtj.svg');
+  background-repeat: no-repeat;
+  background-size: 300px;
+  background-position: right 1em top 2em;
+}
+
+.stats-header, .entries-header {
+  border-bottom: 1px solid #41B883;
+}
+
+#stats-container {
+  p {
+    font-family: 'Press Start 2P', cursive;
+  }
+}
+
+.user-profile-email {
+  color: #FD9636;
 }

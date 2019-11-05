@@ -39,101 +39,67 @@ const PostForm = props => {
     return _.isEmpty(submitErrors)
   }
 
+  let loading = ""
+
   const handleSubmit = event => {
 
     event.preventDefault()
-   if (validForSubmission()) {
+    if (validForSubmission()) {
 
-     fetch('/api/v1/posts.json', {
-     credentials: "same-origin",
-     method: 'POST',
-     body: JSON.stringify(postFields),
-     headers: {
-       Accept: "application/json",
-       "Content-Type": "application/json"
-     }
-   })
-   .then(response => {
-     if (response.ok) {
-       return response;
-     } else {
-       let errorMessage = `${response.status} (${response.statusText})`,
-        error = new Error(errorMessage);
-       throw(error);
-     }
-   })
-   .then(response => response.json())
-   .then(body => {
-     if (body.post.id) {
-       setRedirectNumber(body.post.id)
-     } else {
-       setErrors(body.errors)
-       setPostFields(body.fields)
-     }
-   })
-   .catch(error => console.error(`Error in fetch: ${error.message}`));
+      let submittedFields = new FormData()
+        submittedFields.append("title", postFields.title)
+        submittedFields.append("body", postFields.body)
+        submittedFields.append("photos", photosUpload[0])
+      fetch('/api/v1/posts.json', {
+      credentials: "same-origin",
+      method: 'POST',
+      body: submittedFields
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+         error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      if (body.post.id) {
+        setRedirectNumber(body.post.id)
+      } else {
+        setErrors(body.errors)
+        setPostFields(body.fields)
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
 
-     setPostFields({
-       title: "",
-       body: "",
-     })
-   }
-
-    // event.preventDefault()
-    // if (validForSubmission()) {
-    //   let submittedFields = new FormData()
-    //     submittedFields.append("title", postFields.title)
-    //     submittedFields.append("body", postFields.body)
-    //     submittedFields.append("photos", photosUpload[0])
-    //   fetch('/api/v1/posts.json', {
-    //   credentials: "same-origin",
-    //   method: 'POST',
-    //   body: submittedFields
-    // })
-    // .then(response => {
-    //   if (response.ok) {
-    //     return response;
-    //   } else {
-    //     let errorMessage = `${response.status} (${response.statusText})`,
-    //      error = new Error(errorMessage);
-    //     throw(error);
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then(body => {
-    //   if (body.post.id) {
-    //     setRedirectNumber(body.post.id)
-    //   } else {
-    //     setErrors(body.errors)
-    //     setPostFields(body.fields)
-    //   }
-    // })
-    // .catch(error => console.error(`Error in fetch: ${error.message}`));
-    //
-    //   setPostFields({
-    //     title: "",
-    //     body: "",
-    //     photos: {}
-    //   })
-    // }
+      setPostFields({
+        title: "",
+        body: "",
+        photos: ""
+      })
+    }
   }
 
   if (redirectNumber) {
     return <Redirect to={`/posts/${redirectNumber}`} />
   }
-  //
-  // const onDrop = (file) => {
-  //   if(file.length <= 10) {
-  //     setPhotosUpload(file)
-  //   } else {
-  //     setMessage("You can only upload up to 10 photos")
-  //   }
-  // }
+
+  const onDrop = (file) => {
+    if(file.length === 1) {
+      setPhotosUpload(file)
+    } else {
+      setMessage("You can only upload one photo")
+    }
+  }
 
   return(
-    <div>
-      <h2>Add a New Post</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="row form-margin">
+    <div className="post-form-container columns small-12">
+      <form onSubmit={handleSubmit} className="post-form">
+        <h2 className="text-center">New Journal Entry</h2>
         <ErrorList
           errors={errors}
         />
@@ -148,6 +114,8 @@ const PostForm = props => {
 
         <label htmlFor="body">Body:
           <textarea
+            rows="10"
+            cols="50"
             type="text"
             id="body"
             value={postFields.body}
@@ -155,39 +123,43 @@ const PostForm = props => {
           />
         </label>
 
+        <section>
+          <div className="dropzone">
+            <Dropzone
+              className=""
+              multiple={false}
+              onDrop={file => onDrop(file)}
+              accept='image/*'>
+              {({getRootProps, getInputProps}) => (
 
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <p className="dropzone-box">
+                      Upload a photo from your trip!
+                      <br/>
+                      (Drag n drop or click to upload)
+                    </p>
+                  </div>
 
-        <input className="input-button" type="submit" value="Add Post" />
+              )}
+            </Dropzone>
+          </div>
+          <aside>
+            <ul>
+              {
+                photosUpload.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
+              }
+            </ul>
+          </aside>
+        </section>
+
+        <p>{loading}</p>
+
+        <input className="input-button" type="submit" value="Post" />
       </form>
+    </div>
     </div>
   )
 }
 
 export default PostForm
-//
-//
-// <section>
-//   <div className="dropzone">
-//     <Dropzone
-//       className=""
-//       multiple={true}
-//       onDrop={file => onDrop(file)}>
-//       {({getRootProps, getInputProps}) => (
-//
-//           <div {...getRootProps()}>
-//             <input {...getInputProps()} />
-//             <p>Drag 'n' drop some files here, or click to select files</p>
-//           </div>
-//
-//       )}
-//     </Dropzone>
-//   </div>
-//   <aside>
-//     <ul>
-//       {
-//         photosUpload.map(file => <li key={file.name}>{file.name} - {file.size} bytes</li>)
-//       }
-//     </ul>
-//   </aside>
-// </section>
-//

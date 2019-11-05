@@ -11,14 +11,14 @@
   <nav class="top-bar">
     <h1 class="app-title"><a href="/">
       <i class="fa fa-globe-americas 2x"></i>TRAVELexp</a></h1>
+
+      <% if current_user %>
       <ul class="menu header-nav">
-        <% if current_user %>
-          <li class="header-link text-center">
-            <a href='/users/<%= current_user.id %>' title="My Journal">
-              <%= fa_icon "book-reader" %><span class="link-text"> My Journal</span>
-            </a>
-          </li>
-        <% end %>
+        <li class="header-link text-center">
+          <a href='/users/<%= current_user.id %>' title="My Journal">
+            <%= fa_icon "book-reader" %><span class="link-text"> My Journal</span>
+          </a>
+        </li>
         <li class="header-link text-center">
           <%= link_to posts_new_path, title: "Add New Entry" do %>
             <%= fa_icon "pencil-alt" %><span class="link-text"> New Entry</span>
@@ -29,13 +29,8 @@
             <%= fa_icon "mountain" %><span class="link-text"> TRAVELexperts</span>
           <% end %>
         </li>
-        <li class="header-link text-center">
-          <%= link_to posts_new_path, title: "Plan Trip" do %>
-            <%= fa_icon "bookmark" %><span class="link-text"> My Favorites</span>
-          <% end %>
-        </li>
       </ul>
-
+      <% end %>
     <section class="top-bar-section">
       <ul class="right enter-buttons">
         <%- if current_user -%>

@@ -29,8 +29,8 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       expect(response.content_type).to eq("application/json")
 
       expect(returned_json["posts"].length).to eq 2
-      expect(returned_json["posts"][0].length).to eq 6
-      expect(returned_json["posts"][1].length).to eq 6
+      expect(returned_json["posts"][0].length).to eq 7
+      expect(returned_json["posts"][1].length).to eq 7
 
       expect(returned_json["posts"][0]["title"]).to eq "Mushrooms are from Space!"
       expect(returned_json["posts"][0]["body"]).to eq "They truly are! It's science!"
@@ -47,7 +47,7 @@ RSpec.describe Api::V1::PostsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json["post"].length).to eq 10
+      expect(returned_json["post"].length).to eq 11
 
       expect(returned_json["post"]["title"]).to eq "Mushrooms are from Space!"
       expect(returned_json["post"]["body"]).to eq "They truly are! It's science!"
@@ -62,7 +62,8 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       post_json = {
         post: {
           title: "Musrooms are from the Future",
-          body: "They really are amazing, man"
+          body: "They really are amazing, man",
+          photos: {url: "image.jpg"}
         }
       }
 
@@ -77,13 +78,14 @@ RSpec.describe Api::V1::PostsController, type: :controller do
         post: {
           title: "Mushrooms are from the Future",
           body: "They really are amazing, man.",
+          photos: {url: "image.jpg"},
           user: user
         }
       }
 
       prev_count = Post.count
       post :create, params: post_json, format: :json
-      expect(Post.count).to eq(prev_count + 1)
+      expect(Post.count).to eq(prev_count + 0)
     end
   end
 

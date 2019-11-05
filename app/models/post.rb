@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  mount_uploaders :photos, PostPhotoAlbumUploader
+  mount_uploader :photos, PostPhotoAlbumUploader
 
   validates :title, presence: true
   validates :body, presence: true

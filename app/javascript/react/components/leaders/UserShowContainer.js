@@ -27,8 +27,7 @@ const UserShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(body => {
-
-      setProfilePhoto(body.user.current_user.profile_photo.url)
+      setProfilePhoto(body.user.profile_photo.url)
       setUser(body.user)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))

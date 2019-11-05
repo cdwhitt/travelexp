@@ -13,6 +13,7 @@ const PostShowContainer = (props) => {
     }
   })
   const [author, setAuthor] = useState("")
+  const [photo, setPhoto] = useState("")
   const [comments, setComments] = useState([])
   const [commentFields, setCommentFields] = useState({
     body: ""
@@ -40,6 +41,7 @@ const PostShowContainer = (props) => {
       setAuthor(body.post.user.email)
       setPost(body.post)
       setLoggedInStatus(body.post.logged_in)
+      setPhoto(body.post.photos.url)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -137,6 +139,7 @@ const PostShowContainer = (props) => {
           body={post.body}
           author={author}
           userId={post.user_id}
+          photo={photo}
         />
       <div className="comment-button">
         <button type="button" onClick={showCommentForm}>
