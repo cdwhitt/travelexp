@@ -3,7 +3,7 @@ class Api::V1::PostsController < ApiController
 
   def index
     users = User.all
-    posts = Post.all
+    posts = Post.order('created_at DESC')
 
     render json: {
       users: users,
@@ -16,19 +16,6 @@ class Api::V1::PostsController < ApiController
     render json: post, serializer: PostShowSerializer, scope: {current_user: current_user, logged_in: user_signed_in?}
   end
 
-  # def create
-  #   post = Post.new(post_params)
-  #   post.user = current_user
-  #
-  #   if post.save
-  #     render json: post
-  #   else
-  #     render json: {
-  #       errors: post.errors.messages,
-  #       fields: post
-  #     }
-  #   end
-  # end
   def create
     post = Post.new(
       title: params[:title],
@@ -46,8 +33,4 @@ class Api::V1::PostsController < ApiController
     end
   end
 
-  # private
-  # def post_params
-  #   params.require(:post).permit(:title, :body)
-  # end
 end

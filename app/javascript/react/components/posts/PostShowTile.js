@@ -72,7 +72,6 @@ const PostShowTile = (props) => {
   }
 ];
 
-
   return (
     <>
       <div className="columns small-12">
