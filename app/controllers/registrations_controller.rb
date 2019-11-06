@@ -6,4 +6,4 @@ class RegistrationsController < Devise::RegistrationsController
     '/posts'
   end
 
-end 
+end
