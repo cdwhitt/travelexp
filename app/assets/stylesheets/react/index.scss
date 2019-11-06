@@ -9,6 +9,82 @@ body {
   background-color: #2A5447;
 }
 
+a#sign-up {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 7.5em;
+  padding-right: 7.5em;
+  margin-top: 1em;
+  border-radius: 40px;
+  width: 100px;
+  background-color: #34495E;
+  color: #FDA500;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+a#sign-in {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 7.5em;
+  padding-right: 7.5em;
+  margin-top: 1em;
+  border-radius: 40px;
+  width: 100px;
+  background-color: #34495E;
+  color: #FDA500;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+.splash-page-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  h1.welcome-header {
+    font-family: 'Press Start 2P', cursive;
+    color: #33495E;
+    text-shadow: 4px 4px #41B883;
+  }
+}
+
+.right-splash {
+  padding-top: 7.7em;
+}
+
+.splash-page-tile {
+  border: none;
+  background-color: #7ed9b0;
+  transition: 0.2s;
+  height: 100%;
+  margin: auto;
+  padding: 1em;
+  color: #35495e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  h2, h1 {
+    font-family: 'Staatliches', cursive;
+  }
+  span.index-tile-author {
+    font-family: monospace;
+    font-weight: bold;
+    font-style: italic;
+  }
+  a {
+    color: #347474;
+    transition: 0.2s;
+    background-color: none;
+  }
+  a:hover {
+    color: #42b883;
+  }
+}
+
 .post-tile-container {
   width: 60%;
 }

@@ -8,11 +8,12 @@
 </head>
 <body>
 
+<% if current_user %>
   <nav class="top-bar">
-    <h1 class="app-title"><a href="/">
+    <h1 class="app-title"><a href="/posts">
       <i class="fa fa-globe-americas 2x"></i>TRAVELexp</a></h1>
 
-      <% if current_user %>
+
       <ul class="menu header-nav">
         <li class="header-link text-center">
           <a href='/users/<%= current_user.id %>' title="My Journal">
@@ -30,7 +31,7 @@
           <% end %>
         </li>
       </ul>
-      <% end %>
+
     <section class="top-bar-section">
       <ul class="right enter-buttons">
         <%- if current_user -%>
@@ -42,6 +43,7 @@
       </ul>
     </section>
   </nav>
+<% end %>
 
   <%= yield %>
 
