@@ -1,13 +1,16 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
 
-const MapComponent = (props) => {
-
+const MapComponentShow = (props) => {
+  
   let latitude = 0
   let longitude = 0
 
-  if (props.latitude && props.longitude) {
+  if (props.latitude) {
     latitude = props.latitude
+  }
+
+  if (props.longitude) {
     longitude = props.longitude
   }
 
@@ -16,6 +19,10 @@ const MapComponent = (props) => {
       <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyCBkb1mdrCRYGHyIkBGZ9hQhXaETDvbqUU' }}
           defaultCenter={{
+            lat: 0,
+            lng: 0
+          }}
+          center={{
             lat: latitude,
             lng: longitude
           }}
@@ -26,4 +33,4 @@ const MapComponent = (props) => {
   )
 }
 
-export default MapComponent
+export default MapComponentShow

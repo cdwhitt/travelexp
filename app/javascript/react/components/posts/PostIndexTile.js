@@ -21,7 +21,10 @@ const PostIndexTile = (props) => {
           </Link>
         </div>
         <div className="columns small-12 medium-6 large-6">
-          <MapComponent/>
+          <MapComponent
+            latitude={props.latitude}
+            longitude={props.longitude}
+            />
         </div>
       </div>
     </div>

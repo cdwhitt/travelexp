@@ -38,6 +38,8 @@ const PostsIndexContainer = (props) => {
         title={post.title}
         body={post.body}
         userEmail={userEmail}
+        latitude={post.latitude}
+        longitude={post.longitude}
       />
     )
   })

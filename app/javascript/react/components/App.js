@@ -10,8 +10,6 @@ import PostShowContainer from "./posts/PostShowContainer"
 import LeadersIndexContainer from "./leaders/LeadersIndexContainer"
 import UserShowContainer from "./leaders/UserShowContainer"
 
-
-
 export const App = (props) => {
   return (
     <BrowserRouter>

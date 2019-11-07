@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone'
 const PostForm = props => {
   const [postFields, setPostFields] = useState({
     title: "",
+    location: "",
     body: "",
   })
   const [photosUpload, setPhotosUpload] = useState([])
@@ -39,8 +40,6 @@ const PostForm = props => {
     return _.isEmpty(submitErrors)
   }
 
-  let loading = ""
-
   const handleSubmit = event => {
 
     event.preventDefault()
@@ -48,6 +47,7 @@ const PostForm = props => {
 
       let submittedFields = new FormData()
         submittedFields.append("title", postFields.title)
+        submittedFields.append("location", postFields.location)
         submittedFields.append("body", postFields.body)
         submittedFields.append("photos", photosUpload[0])
       fetch('/api/v1/posts.json', {
@@ -77,6 +77,7 @@ const PostForm = props => {
 
       setPostFields({
         title: "",
+        location: "",
         body: "",
         photos: ""
       })
@@ -108,6 +109,15 @@ const PostForm = props => {
             type="text"
             id="title"
             value={postFields.title}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label htmlFor="location">Location (optional - enter a city, state, region, or country):
+          <input
+            type="text"
+            id="location"
+            value={postFields.location}
             onChange={handleInputChange}
           />
         </label>
@@ -152,8 +162,6 @@ const PostForm = props => {
             </ul>
           </aside>
         </section>
-
-        <p>{loading}</p>
 
         <input className="input-button" type="submit" value="Post" />
       </form>
