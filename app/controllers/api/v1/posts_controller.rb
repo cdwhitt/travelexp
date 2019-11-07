@@ -3,7 +3,7 @@ class Api::V1::PostsController < ApiController
 
   def index
     users = User.all
-    posts = Post.all
+    posts = Post.order(created_at: :desc)
     render json: {
       users: users,
       posts: posts

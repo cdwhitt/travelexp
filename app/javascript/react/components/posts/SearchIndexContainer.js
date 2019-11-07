@@ -58,9 +58,11 @@ const PostsIndexContainer = (props) => {
   return (
     <>
       <div className="row">
-        <PostsSearch
-          handleSearchSubmit={handleSearchSubmit}
-        />
+        <div className="columns large-12">
+          <PostsSearch
+            handleSearchSubmit={handleSearchSubmit}
+          />
+        </div>
       </div>
       <div className="row post-tile-container">
         {postTiles}

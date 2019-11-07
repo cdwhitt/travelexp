@@ -14,6 +14,12 @@
   a:hover {
     color: #FD9636;
   }
+  h1.title-form-headers {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    color: #57998D;
+    text-shadow: 4px 4px #0A4158;
+  }
 }
 
 .form-container form {
@@ -174,3 +180,6 @@
 .form-margin {
   margin-top: 1em;
 }
+// textarea[type='text'], input[type='text']#title, input[type='text']#location, input[type='password'], input[type='email'] {
+//
+// }

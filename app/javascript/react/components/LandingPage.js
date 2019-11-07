@@ -6,7 +6,7 @@ const LandingPage = (props) => {
     <div className="splash-page-container">
       <div className="splash-page-tile">
         <div className="columns large-12 text-center">
-          <h1 className="welcome-header">TRAVELexp</h1>
+          <h1 className="welcome-header"><i class="fa fa-globe-americas 2x"></i>TRAVELexp</h1>
           <div className="row">
             <div className="columns large-6">
               <img src="https://travelexpbucket.s3.amazonaws.com/travelexp/undraw_traveling_t8y2+(1).svg"/>

@@ -16,7 +16,7 @@ const PostsSearch = (props) => {
       <h1>Search Form</h1>
 
       <form onSubmit={handleSearchPayload}>
-        <label htmlFor="location">Search post by location:
+        <label htmlFor="location">Planning a trip? Search for a location written by one of our users:
           <input
             type="text"
             id="location"
