@@ -32,11 +32,11 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       expect(returned_json["posts"][0].length).to eq 10
       expect(returned_json["posts"][1].length).to eq 10
 
-      expect(returned_json["posts"][1]["title"]).to eq "I Love Me A Good Sandwhich"
-      expect(returned_json["posts"][1]["body"]).to eq "They taste so delish."
+      expect(returned_json["posts"][1]["title"]).to eq "Mushrooms are from Space!"
+      expect(returned_json["posts"][1]["body"]).to eq "They truly are! It's science!"
 
-      expect(returned_json["posts"][0]["title"]).to eq "Mushrooms are from Space!"
-      expect(returned_json["posts"][0]["body"]).to eq "They truly are! It's science!"
+      expect(returned_json["posts"][0]["title"]).to eq "I Love Me A Good Sandwhich"
+      expect(returned_json["posts"][0]["body"]).to eq "They taste so delish."
     end
   end
 
