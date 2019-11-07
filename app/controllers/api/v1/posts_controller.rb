@@ -20,9 +20,11 @@ class Api::V1::PostsController < ApiController
     post = Post.new(
       title: params[:title],
       body: params[:body],
-      photos: params[:photos]
+      photos: params[:photos],
+      location: params[:location]
     )
     post.user = current_user
+    post.geocode
     if post.save
       render json: post
     else

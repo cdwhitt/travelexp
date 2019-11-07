@@ -58,3 +58,4 @@ gem 'active_model_serializers'
 gem 'font_awesome5_rails'
 gem "carrierwave"
 gem 'fog-aws'
+gem 'geocoder'
