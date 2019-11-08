@@ -26,6 +26,11 @@
           <% end %>
         </li>
         <li class="header-link text-center">
+          <a href='/posts/search' title="Search Entries">
+            <%= fa_icon "search-location" %><span class="link-text"> Search Entries</span>
+          </a>
+        </li>
+        <li class="header-link text-center">
           <%= link_to leaders_path, title: "TRAVELexperts" do %>
             <%= fa_icon "mountain" %><span class="link-text"> TRAVELexperts</span>
           <% end %>
@@ -43,7 +48,11 @@
       </ul>
     </section>
   </nav>
+
 <% end %>
+
+
+
 
   <%= yield %>
 

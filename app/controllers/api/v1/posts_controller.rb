@@ -3,8 +3,7 @@ class Api::V1::PostsController < ApiController
 
   def index
     users = User.all
-    posts = Post.order('created_at DESC')
-
+    posts = Post.order(created_at: :desc)
     render json: {
       users: users,
       posts: posts
@@ -33,6 +32,16 @@ class Api::V1::PostsController < ApiController
         fields: post
       }
     end
+  end
+
+  def search
+    users = User.all
+    posts = []
+    posts = Post.where("location ILIKE ?", "%#{params['search_string']}%").or(Post.where("title ILIKE ?", "%#{params['search_string']}%"))
+    render json: {
+      users: users,
+      posts: posts
+    }
   end
 
 end
