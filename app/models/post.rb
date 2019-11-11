@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+  validates :location, presence: true
 
   belongs_to :user
   has_many :comments
@@ -15,5 +16,5 @@ class Post < ApplicationRecord
   def address
     [location].compact.join(', ')
   end
-  
+
 end

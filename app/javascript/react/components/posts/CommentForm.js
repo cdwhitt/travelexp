@@ -14,6 +14,7 @@ const CommentForm = props => {
         <p className="comment-user">Comment as {props.currentUser}</p>
         <label htmlFor="body">
           <textarea
+            className="comment-body"
             type="text"
             id="body"
             value={props.commentFields.body}

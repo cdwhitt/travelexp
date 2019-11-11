@@ -1,6 +1,14 @@
 .user-show-container {
   width: 70%;
   font-family: monospace;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.entries-column ol {
+  font-size: 1.25em;
+  padding-left: 0.5em;
+  font-weight: 700;
 }
 
 .show-user-tile {
@@ -8,8 +16,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   transition: 0.2s;
-  margin-top: 0.75em;
-  padding: 2em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1.5em;
   color: #35495e;
   h5, h4, h3, h2, h1 {
     font-family: 'Staatliches', cursive;
