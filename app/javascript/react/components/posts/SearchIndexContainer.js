@@ -3,7 +3,7 @@ import PostIndexTile from './PostIndexTile'
 import PostsSearch from './PostsSearch'
 
 const PostsIndexContainer = (props) => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState(null)
   const [users, setUsers] = useState([])
 
   const handleSearchSubmit = (searchField) => {
@@ -35,25 +35,42 @@ const PostsIndexContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  let userEmail = ""
-  const postTiles = posts.map(post => {
-    users.map(user => {
-      if (user.id === post.user_id) {
-        userEmail = user.email
-      }
+  let postTiles = []
+
+  if (posts !== null) {
+    let userEmail = ""
+    postTiles = posts.map(post => {
+      users.map(user => {
+        if (user.id === post.user_id) {
+          userEmail = user.email
+        }
+      })
+      return (
+        <PostIndexTile
+          id={post.id}
+          key={post.id}
+          title={post.title}
+          body={post.body}
+          userEmail={userEmail}
+          latitude={post.latitude}
+          longitude={post.longitude}
+        />
+      )
     })
-    return (
-      <PostIndexTile
-        id={post.id}
-        key={post.id}
-        title={post.title}
-        body={post.body}
-        userEmail={userEmail}
-        latitude={post.latitude}
-        longitude={post.longitude}
-      />
-    )
-  })
+  }
+
+  let results
+
+  if (posts !== null && posts.length === 0) {
+    results =
+    <div className="column small-12 post-tile">
+      <div className="row">
+        <div className="columns small-12">
+          <h1 className="text-center">No results! Try another term.</h1>
+          </div>
+        </div>
+      </div>
+  }
 
   return (
     <>
@@ -65,6 +82,7 @@ const PostsIndexContainer = (props) => {
         </div>
       </div>
       <div className="row post-tile-container">
+        {results}
         {postTiles}
       </div>
     </>

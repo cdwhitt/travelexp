@@ -9,14 +9,18 @@ const PostsSearch = (props) => {
 
   const handleSearchPayload = event => {
     props.handleSearchSubmit(searchField)
+    clearForm()
+  }
+
+  const clearForm = event => {
+    setSearchField("")
   }
 
   return (
-    <div>
-      <h1>Search Form</h1>
-
+    <div className="post-form-container search-form">
       <form onSubmit={handleSearchPayload}>
-        <label htmlFor="location">Planning a trip? Search for a location written by one of our users:
+        <h2 className="title-form-headers text-center">Entries Search</h2>
+        <label htmlFor="location">Planning a trip? Search for a location that's been detailed by one of our users:
           <input
             type="text"
             id="location"
@@ -25,6 +29,7 @@ const PostsSearch = (props) => {
           />
         </label>
         <input className="input-button" type="submit" value="Search" />
+        <input className="clear-button" type="button" value="Clear" onClick={clearForm}/>
       </form>
     </div>
   )

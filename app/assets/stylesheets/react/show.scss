@@ -44,10 +44,11 @@
 
 .comment-button button {
   background-color: none;
-  font-size: 0.75em;
-  border: 1px solid #FD9636;
+  font-size: .9em;
+  border: 2px solid #FD9636;
+  font-weight: bold;
   padding: 0.5em;
-  width: 6em;
+  width: 7em;
   color: #FD9636;
   transition: 0.2s;
   cursor: pointer;
@@ -106,5 +107,8 @@
     cursor: pointer;
     margin-left: 0.25em;
   }
+}
 
+textarea#body, textarea#body:focus {
+  background-color: white;
 }

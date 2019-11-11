@@ -44,11 +44,12 @@
   .actions {
     margin: auto;
     width: 90%;
-    padding: 0.5em;
+    padding: 0;
   }
   input[type=submit] {
     background-color: #0A4158;
-    border: 1px solid #FD9636;
+    border: 2px solid #FD9636;
+    font-weight: bold;
     padding: 0.5em;
     width: 8em;
     color: #FD9636;
@@ -56,7 +57,7 @@
     transition: 0.2s;
   }
   input[type=submit]:hover {
-    border: 1px solid #42b883;
+    border: 2px solid #42b883;
     color: #42b883;
     cursor: pointer;
   }
@@ -66,7 +67,8 @@
   margin-top: 0.75em;
   input[type=submit] {
     background-color: none;
-    border: 1px solid #42b883;
+    border: 2px solid #42b883;
+    font-weight: bold;
     padding: 0.5em;
     width: 5em;
     color: #42b883;
@@ -74,7 +76,7 @@
     transition: 0.2s;
   }
   input[type=submit]:hover {
-    border: 1px solid #FD9636;
+    border: 2px solid #FD9636;
     color: #FD9636;
     cursor: pointer;
     }
@@ -121,19 +123,21 @@
   .actions {
     margin: auto;
     width: 90%;
-    padding: 0.5em;
+    padding: 0;
   }
-  input[type=submit] {
+  input[type=submit], input[type=button] {
     background-color: #0A4158;
-    border: 1px solid #FD9636;
-    padding: 0.5em;
+    border: 2px solid #FD9636;
+    font-weight: bold;
+    padding: 0;
+    margin-right: 0.5em;
     width: 8em;
     color: #FD9636;
     text-transform: uppercase;
     transition: 0.2s;
   }
-  input[type=submit]:hover {
-    border: 1px solid #42b883;
+  input[type=submit]:hover, input[type=button]:hover {
+    border: 2px solid #42b883;
     color: #42b883;
     cursor: pointer;
   }
@@ -141,18 +145,20 @@
 
 .post-form {
   padding: 5em;
-  input[type=submit] {
+  input[type=submit].input-button {
     background-color: none;
-    border: 1px solid #42b883;
+    border: 2px solid #FD9636;
     padding: 0.5em;
-    width: 5em;
-    color: #42b883;
+    width: 7em;
+    color: #FD9636;
+    font-weight: bold;
     text-transform: uppercase;
     transition: 0.2s;
+    align-content: right;
   }
-  input[type=submit]:hover {
-    border: 1px solid #FD9636;
-    color: #FD9636;
+  input[type=submit].input-button:hover {
+    border: 2px solid #42b883;
+    color:  #42b883;
     cursor: pointer;
     }
 }
@@ -160,10 +166,10 @@
 .dropzone-box {
   border: 3px dotted black;
   background-color: #0A4158;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.75em;
+  font-family: monospace;
+  font-size: 1em;
+  font-weight: bold;
   color: #FD9636;
-  opacity: 90%;
   padding: 1em;
   text-align: center;
   transition: 0.2s;
@@ -179,7 +185,23 @@
 
 .form-margin {
   margin-top: 1em;
+  margin-bottom: 1em;
 }
-// textarea[type='text'], input[type='text']#title, input[type='text']#location, input[type='password'], input[type='email'] {
-//
-// }
+
+.search-form form {
+  margin-top: 1em;
+  input.clear-button, input.input-button {
+    padding: 0.5em;
+  }
+}
+
+input[type='text'], input[type='text']:focus, textarea[type='text']#body, textarea[type='text']#body:focus, input[type='email'], input[type='password'], input[type='email']:focus, input[type='password']:focus {
+  background-color: #CCDFED;
+  color: #0A4158;
+  border-radius: 5px;
+}
+
+textarea[type='text']#body.comment-body, textarea[type='text']#body.comment-body:focus {
+  background-color: white;
+  color: #0A4158;
+}
