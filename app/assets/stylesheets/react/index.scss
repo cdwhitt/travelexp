@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
+.description {
+  font-family: monospace;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-shadow: 2px 2px #41B883;
+}
+
 body {
   background: image-url("mountain-background.png");
   background-repeat: no-repeat;
@@ -41,6 +48,7 @@ a#sign-in {
 
 .splash-page-container {
   position: absolute;
+  margin: auto;
   width: 100%;
   height: 100%;
   left: 0;
@@ -61,10 +69,11 @@ a#sign-in {
 .splash-page-tile {
   border: none;
   background-color: #7ed9b0;
-  transition: 0.2s;
-  height: 100%;
+  height: 110%;
+  width: 100%;
+  position: absolute;
   margin: auto;
-  padding: 1em;
+  padding: 2em;
   color: #35495e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   h2, h1 {

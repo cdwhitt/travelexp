@@ -25,7 +25,7 @@ const PostForm = props => {
   const validForSubmission = () => {
     let submitErrors = {}
 
-    const requiredFields = ["title", "body"]
+    const requiredFields = ["title", "location", "body"]
 
     requiredFields.forEach(field => {
       if(postFields[field] === "") {
@@ -113,7 +113,7 @@ const PostForm = props => {
           />
         </label>
 
-        <label htmlFor="location">Location (optional - enter a city, state, region, or country):
+        <label htmlFor="location">Location (enter a city, state, region, or country):
           <input
             type="text"
             id="location"
