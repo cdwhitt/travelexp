@@ -13,7 +13,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
   let!(:comment1) { Comment.create(
     body: "This is really a great post",
     user: user1,
-    post: post1
+    post_id: 1
   ) }
 
   describe "POST#create" do
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
         comment: {
           body: "this is a terrible post. I really disliked it a lot"
         },
-        post_id: Post.first.id
+        post_id: 1
       }
 
       prev_count = Comment.count
