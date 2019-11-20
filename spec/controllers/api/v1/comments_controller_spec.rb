@@ -8,6 +8,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
   let!(:post1) { Post.create(
     title: "Top 10 places to travel in America",
     body: "Here they are! These are the best places to visit in America",
+    location: "America",
     user: user1
   ) }
   let!(:comment1) { Comment.create(

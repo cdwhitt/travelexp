@@ -8,12 +8,14 @@ RSpec.describe Api::V1::PostsController, type: :controller do
 
   let!(:post1) { Post.create(
     title: "Mushrooms are from Space!",
+    location: "Toronto",
     body: "They truly are! It's science!",
     user: user1
   ) }
 
   let!(:post2) { Post.create(
     title: "I Love Me A Good Sandwhich",
+    location: "Pittsburgh",
     body: "They taste so delish.",
     user: user1
   ) }
@@ -33,9 +35,11 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       expect(returned_json["posts"][1].length).to eq 10
 
       expect(returned_json["posts"][1]["title"]).to eq "Mushrooms are from Space!"
+      expect(returned_json["posts"][1]["location"]).to eq "Toronto"
       expect(returned_json["posts"][1]["body"]).to eq "They truly are! It's science!"
 
       expect(returned_json["posts"][0]["title"]).to eq "I Love Me A Good Sandwhich"
+      expect(returned_json["posts"][0]["location"]).to eq "Pittsburgh"
       expect(returned_json["posts"][0]["body"]).to eq "They taste so delish."
     end
   end
